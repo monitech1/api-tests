@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: monigan-api
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: monigan-api
+  template:
+    metadata:
+      labels:
+        app: monigan-api
+    spec:
+      containers:
+      - name: monigan-api
+        image: us-docker.pkg.dev/my-devops-team-404512/monigan-api
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: monigan-api-service
+spec:
+  selector:
+    app: monigan-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 3000
+  type: LoadBalancer
