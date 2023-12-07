@@ -21,9 +21,9 @@ spec:
           resources:
             limits:
               cpu: "500m"
-              memory: "500Mi"
+              memory: "100Mi"
             requests:
-              cpu: "250m"
+              cpu: "0.5"
               memory: "250Mi"
           livenessProbe:
             httpGet:
