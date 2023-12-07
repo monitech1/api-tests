@@ -1,11 +1,15 @@
 const express =require('express');
+const app = express(); //app is a backend application
 
-const port = 3000;
+app.get("/", (req,res) => {
+    res.send("Welcome to my monigan backend application");
+}); //forward slash means the context root of the application, or the url without
 
-const app = express();
+app.get("/ernest", (req,res) => {
+    res.send("Hello Monigan!");
+});
 
-app.get('/', (req,res) => {res.send("Hello Browser")});
 
-app.get('/Monigan', (req,res) => {res.send("Hello Monigan")});
-
-app.listen(port, ()=>console.log("Listening"));
+app.listen(3000, ()=>{
+    console.log("Listening");
+});

@@ -1,13 +1,15 @@
-FROM node:14
+FROM node:alpine
 
-WORKDIR /usr/src/app
+WORKDIR /usr/app
 
-COPY package*.json ./
+COPY package.json /usr/app
 
+COPY server.js /usr/app
+
+# installs the current packages
 RUN npm install
-
-COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "server.js"]
+# The below command is what happens when you run the container
+CMD ["node","server.js"]
